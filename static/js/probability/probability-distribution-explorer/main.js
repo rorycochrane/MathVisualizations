@@ -24,37 +24,55 @@ function createSliders(params, selectedDistributionKey) {
     slidersContainer.innerHTML = ''; // Clear existing sliders
 
     params.forEach(param => {
-        const sliderWrapper = document.createElement('div');
-        sliderWrapper.classList.add('slider-wrapper');
+        // Create the row
+        const sliderRow = document.createElement('div');
+        sliderRow.classList.add('row');
+
+        // Create the column for label and output
+        const labelCol = document.createElement('div');
+        labelCol.classList.add('col');
 
         const label = document.createElement('label');
-        label.innerHTML = `${param.label}: `;
+        label.innerText = `${param.label}: `;
         label.htmlFor = `slider-${param.name}`;
+
+        const output = document.createElement('span');
+        output.id = `output-${param.name}`;
+        output.innerText = ' ' + param.default;
+
+        // Append label and output to the column
+        labelCol.appendChild(label);
+        labelCol.appendChild(output);
+
+        // Create the column for the slider
+        const sliderCol = document.createElement('div');
+        sliderCol.classList.add('col');
 
         const slider = document.createElement('input');
         slider.type = 'range';
+        slider.className = 'form-range';
         slider.id = `slider-${param.name}`;
         slider.min = param.min;
         slider.max = param.max;
         slider.step = param.step;
         slider.value = param.default;
 
-        // Display current value of each slider next to it
-        const output = document.createElement('span');
-        output.id = `output-${param.name}`;
-        output.innerHTML = param.default;
-
-        // Set up event listener to update plots on slider change
+        // Set up the event listener for the slider
         slider.addEventListener('input', function() {
-            output.innerHTML = this.value;
+            output.innerText = ' ' + this.value;
             const newParams = getParamsFromSliders(distributions[selectedDistributionKey].params);
             redrawPlots(selectedDistributionKey, newParams);
         });
 
-        sliderWrapper.appendChild(label);
-        sliderWrapper.appendChild(slider);
-        sliderWrapper.appendChild(output);
-        slidersContainer.appendChild(sliderWrapper);
+        // Append the slider to its column
+        sliderCol.appendChild(slider);
+
+        // Append both columns to the row
+        sliderRow.appendChild(labelCol);
+        sliderRow.appendChild(sliderCol);
+
+        // Append the row to the sliders container
+        slidersContainer.appendChild(sliderRow);
     });
 }
 
