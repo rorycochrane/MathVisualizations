@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block head %}
+        <meta name="description" content="Interactive Probability Distribution Visualizer" />
+        <meta name="author" content="Universe of Numbers" />
+        <title>Probability Distribution Visualizer</title>
+        <script type="module" src="../../static/js/probability/probability-distribution-explorer/main.js"></script>
+        <style>
+            .axis path, .axis line {
+                fill: none;
+                stroke: black;
+            }
+        
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        
+            .flex-item {
+                /* The flex value allows the items to be the same size */
+                flex: 1;
+            }
+        
+            @media only screen and (min-width: 768px) {
+                .flex-container {
+                    flex-direction: row;
+                }
+            }
+            svg {
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        
+{% endblock %}
+    
+{% block body %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1>Probability Distribution Explorer</h1>
+                        <h2 class="subheading">Visualize various probability distributions, and see how they respond as their inputs change.</h2>
+                        <span class="meta">
+                            Posted by
+                            Universe of Numbers
+                            on December 17, 2023
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    
+                    <div class="flex-container">
+                        <div id="pdf-container" class="flex-item m-2"></div>
+                        <div id="cdf-container" class="flex-item m-2"></div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <select id="distribution-select">
+                            <option value="binomial">Binomial</option>
+                            <option value="bernoulli">Bernoulli</option>
+                            <option value="poisson">Poisson</option>
+                            <option value="geometric">Geometric</option>
+                            <option value="hypergeometric">Hypergeometric</option>
+                            <option value="uniform">Uniform</option>
+                            <option value="negativeBinomial">Negative Binomial</option>
+                          </select>                          
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div id="sliders-container"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block head %}
+        <meta name="description" content="Interactive Math Visualizations" />
+        <meta name="author" content="Euclidean Elements" />
+        <title>Universe of Numbers</title>
+{% endblock %}
+    
+{% block body %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Universe of Numbers</h1>
+                        <span class="subheading">Interactive Math Visualizations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                
+                <div class="post-preview">
+                    <a href="{{ url_for('probability_probability_distribution_explorer') }}">
+                        <h2 class="post-title">Probability Distribution Explorer</h2>
+                    </a>
+                    <h3 class="post-subtitle">Visualize various probability distributions, and see how they respond as their inputs change</h3>
+                    <p class="post-meta">
+                        Posted by
+                        Universe of Numbers
+                        on December 19, 2023
+                    </p>
+                </div>
+                
+                <hr class="my-4" />
+
+                <div class="post-preview">
+                    <a href="{{ url_for('trigonometry_trig_visualizer') }}">
+                        <h2 class="post-title">Trigonometry Visualizer</h2>
+                    </a>
+                    <h3 class="post-subtitle">Learn trigonometry with this interactive visualization tool</h3>
+                    <p class="post-meta">
+                        Posted by
+                        Universe of Numbers
+                        on September 17, 2023
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
